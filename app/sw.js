@@ -7,7 +7,7 @@
  */
 'use strict';
 
-var CACHE_VERSION = 'piticko-v4';
+var CACHE_VERSION = 'piticko-v5';
 var ASSETS = [
   '/app/',
   '/app/app.css',

@@ -71,7 +71,7 @@
   --radius: 8px;
   --font-head: 'Fraunces', Georgia, 'Times New Roman', serif;
   --font-body: 'Work Sans', system-ui, -apple-system, sans-serif;
-  --bottom-h: 156px;
+  --bottom-h: 88px;
 }
 [data-theme="light"] { color-scheme: light; }
 
@@ -263,26 +263,23 @@ p:last-child { margin-bottom: 0; }
   to { opacity: 1; transform: translateY(0) rotate(0deg); }
 }
 
-/* ---------- Spodní lišta a plovoucí tlačítko Přidat ---------- */
+/* ---------- Spodní ovládací panel (záložky + tlačítko Přidat) ---------- */
 .bottom {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
   background: var(--paper);
   border-top: 2px solid var(--ink);
-  padding: 10px 16px calc(env(safe-area-inset-bottom, 0px) + 6px);
+  padding: 8px 12px calc(env(safe-area-inset-bottom, 0px) + 8px);
 }
 .bottom > * { max-width: 608px; margin-left: auto; margin-right: auto; }
-.btn-add {
-  display: flex; width: 100%; min-height: 54px;
-  font-family: var(--font-head); font-size: 20px; font-weight: 800;
-  background: var(--accent-2); color: var(--on-accent);
-  border: 2px solid var(--ink);
-  border-radius: var(--radius);
-  box-shadow: 4px 4px 0 var(--ink);
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  align-items: stretch;
 }
-.tabs { display: flex; justify-content: space-around; gap: 8px; margin-top: 8px; }
 .tabs a {
-  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
-  min-height: 50px; padding: 6px 4px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  min-height: 54px; padding: 6px 4px;
   border-radius: var(--radius); border: 2px solid transparent;
   color: var(--text); text-decoration: none; font-size: 14px; font-weight: 600;
 }
@@ -292,6 +289,19 @@ p:last-child { margin-bottom: 0; }
   border-color: var(--ink);
   box-shadow: 2px 2px 0 var(--ink);
 }
+.btn-add {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  min-height: 54px; padding: 6px 6px;
+  font-family: var(--font-head); font-size: 15px; font-weight: 800;
+  background: var(--accent-2); color: var(--on-accent);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: 3px 3px 0 var(--ink);
+  cursor: pointer;
+  transition: transform 150ms ease;
+}
+.btn-add:hover { transform: translate(-1px, -1px); }
+.btn-add:active { transform: translate(2px, 2px); }
 
 /* ---------- Hlavní obrazovka: ukazatel jako nádoba ---------- */
 .status-card {

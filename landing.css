@@ -1,7 +1,6 @@
 /*
  * Pitíčko – vzhled landing page a stránky ochrany soukromí.
- * Vizuální směr: „kuchyňský sešit“ (risografický tisk, papír + inkoust + 2 akcenty).
- * Sdílí barevnou paletu a lokální fonty s aplikací.
+ * Vizuální směr: „kuchyňský sešit“ (trvale v tmavém režimu).
  */
 
 @font-face {
@@ -53,19 +52,18 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* ---------- Barvy: světlý režim (výchozí) ---------- */
+/* ---------- Barvy: hlavní stránka je trvale v tmavém režimu ---------- */
 :root {
-  color-scheme: light dark;
-  --paper: #F5F0E6;
-  --ink: #1E2A3A;
-  --accent-1: #2BA7B5;
-  --accent-2: #FF6A4D;
-  --card: #FFFBF3;
-  --on-accent: #1E2A3A;
+  color-scheme: dark;
+  --paper: #141B26;
+  --ink: #F5F0E6;
+  --accent-1: #5FD3DF;
+  --accent-2: #FF8A70;
+  --card: #1E2836;
+  --on-accent: #141B26;
 
-  /* Sekce Soukromí má tmavé pozadí v obou režimech */
-  --priv-bg: #141B26;
-  --priv-card: #1E2836;
+  --priv-bg: #0E141D;
+  --priv-card: #192330;
   --priv-text: #F5F0E6;
   --priv-accent-1: #5FD3DF;
   --priv-accent-2: #FF8A70;
@@ -77,29 +75,6 @@
   --radius: 8px;
   --font-head: 'Fraunces', Georgia, 'Times New Roman', serif;
   --font-body: 'Work Sans', system-ui, -apple-system, sans-serif;
-}
-[data-theme="light"] { color-scheme: light; }
-
-[data-theme="dark"] {
-  color-scheme: dark;
-  --paper: #141B26;
-  --ink: #F5F0E6;
-  --accent-1: #5FD3DF;
-  --accent-2: #FF8A70;
-  --card: #1E2836;
-  --on-accent: #141B26;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]):not([data-theme="dark"]),
-  [data-theme="system"] {
-    --paper: #141B26;
-    --ink: #F5F0E6;
-    --accent-1: #5FD3DF;
-    --accent-2: #FF8A70;
-    --card: #1E2836;
-    --on-accent: #141B26;
-  }
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -150,14 +125,6 @@ p:last-child { margin-bottom: 0; }
 }
 .brand img { width: 38px; height: 38px; border-radius: 6px; }
 .header-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-.theme-btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  min-width: 48px; min-height: 48px; padding: 0 14px;
-  background: var(--surface); color: var(--text);
-  border: 2px solid var(--ink); border-radius: var(--radius);
-  box-shadow: 2px 2px 0 var(--ink);
-  font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
-}
 
 /* ---------- Tlačítka ---------- */
 .btn {
@@ -194,7 +161,7 @@ section { padding: 44px 0; }
 }
 .sec-lead { font-size: 18px; max-width: 64ch; margin-bottom: 26px; }
 
-/* ---------- 1. Hero s misregistration a nádobou ---------- */
+/* ---------- 1. Hero s misregistration, chodským „íčko“ a nádobou ---------- */
 .hero {
   display: grid;
   gap: 28px;
@@ -209,28 +176,31 @@ section { padding: 44px 0; }
   font-size: clamp(54px, 11vw, 88px);
   line-height: 1.04;
   margin-bottom: 10px;
-  text-shadow: 3px 3px 0 var(--accent-1);
-}
-[data-theme="dark"] .hero-title {
   text-shadow: 3px 3px 0 rgba(95, 211, 223, 0.42);
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]):not([data-theme="dark"]) .hero-title,
-  [data-theme="system"] .hero-title {
-    text-shadow: 3px 3px 0 rgba(95, 211, 223, 0.42);
-  }
-}
-/* Poznámka na okraji sešitu (Easter egg) */
+/* Poznámka na okraji sešitu se zvýrazněným chodským „íčko“ */
 .hero-quibble {
-  display: inline-flex; align-items: center; gap: 8px;
+  display: inline-flex; align-items: center; flex-wrap: wrap; gap: 6px;
   font-family: var(--font-head);
-  font-size: 16px;
+  font-size: 17px;
   background: var(--surface);
   border: 1.5px dashed var(--ink);
   border-radius: 6px;
-  padding: 5px 12px;
+  padding: 6px 14px;
   transform: rotate(-1.3deg);
   margin: 0 0 18px;
+}
+.quibble-icko {
+  display: inline-block;
+  background: var(--accent-2);
+  color: var(--on-accent);
+  border: 2px solid var(--ink);
+  border-radius: 5px;
+  padding: 1px 8px;
+  margin: 0 1px;
+  font-weight: 800;
+  box-shadow: 2px 2px 0 var(--accent-1);
+  transform: rotate(1.8deg);
 }
 .hero-slogan {
   font-family: var(--font-head);
@@ -312,7 +282,6 @@ section { padding: 44px 0; }
 .sticky-1 { transform: rotate(-0.8deg); }
 .sticky-2 { transform: rotate(0.7deg); }
 .sticky-3 { transform: rotate(-0.5deg); }
-/* Lepicí páska nahoře */
 .sticky::before {
   content: "";
   position: absolute;
@@ -334,7 +303,7 @@ section { padding: 44px 0; }
 }
 .sticky-2 .step-num { background: var(--accent-2); }
 
-/* ---------- 4. Soukromí – nejvýraznější sekce (tmavá v obou režimech) ---------- */
+/* ---------- 4. Soukromí – nejvýraznější sekce ---------- */
 .privacy-band {
   background: var(--priv-bg);
   color: var(--priv-text);
@@ -414,7 +383,7 @@ section { padding: 44px 0; }
 .faq details[open] summary::after { content: "−"; background: var(--accent-2); }
 .faq .faq-body { padding: 4px 0 16px; border-top: 1.5px dashed var(--ink); }
 
-/* ---------- 8. Patička ---------- */
+/* ---------- 8. Patička a sekundární patička o autorovi ---------- */
 .site-footer {
   margin-top: 32px; padding: 32px 0 48px;
   border-top: 2px solid var(--ink);
@@ -424,8 +393,82 @@ section { padding: 44px 0; }
   background: var(--surface);
   border: 2px dashed var(--ink);
   border-radius: var(--radius);
-  padding: 16px 20px; margin-bottom: 18px;
+  padding: 16px 20px; margin-bottom: 24px;
 }
+
+.secondary-footer {
+  padding: 24px;
+  margin-bottom: 24px;
+  background: var(--surface);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.secondary-footer-grid {
+  display: grid;
+  gap: 24px;
+}
+@media (min-width: 720px) {
+  .secondary-footer-grid {
+    grid-template-columns: 1fr 1.2fr;
+    align-items: start;
+  }
+}
+.author-tag {
+  display: inline-block;
+  background: var(--accent-1);
+  color: var(--on-accent);
+  border: 1.5px solid var(--ink);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-family: var(--font-head);
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.apps-box .author-tag { background: var(--accent-2); }
+.author-title {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+.author-links {
+  margin-top: 10px;
+}
+.apps-grid {
+  display: grid;
+  gap: 12px;
+}
+@media (min-width: 520px) {
+  .apps-grid { grid-template-columns: 1fr 1fr; }
+}
+.app-mini-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: 2px 2px 0 var(--ink);
+  text-decoration: none;
+  transition: transform 150ms ease;
+}
+.app-mini-card:hover {
+  transform: translate(-1px, -1px);
+  border-color: var(--accent-1);
+}
+.app-mini-name {
+  font-family: var(--font-head);
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--accent-1);
+}
+.app-mini-desc {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text);
+}
+
 .footer-links {
   display: flex; flex-wrap: wrap; gap: 18px;
   align-items: center; justify-content: space-between;
@@ -450,7 +493,7 @@ section { padding: 44px 0; }
     transition: none !important;
     animation: none !important;
   }
-  .sticky-1, .sticky-2, .sticky-3, .hero-quibble {
+  .sticky-1, .sticky-2, .sticky-3, .hero-quibble, .quibble-icko {
     transform: none !important;
   }
 }
