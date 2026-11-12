@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 120" role="img" aria-label="Položka Přidat na plochu">
+  <rect x="2" y="2" width="276" height="116" rx="8" fill="#F5F0E6" stroke="#1E2A3A" stroke-width="2"/>
+  <rect x="27" y="27" width="230" height="72" rx="8" fill="#2BA7B5"/>
+  <rect x="24" y="24" width="230" height="72" rx="8" fill="#FFFBF3" stroke="#1E2A3A" stroke-width="2"/>
+  <text x="42" y="66" font-family="Fraunces,Georgia,serif" font-size="17" font-weight="800" fill="#1E2A3A">2. Přidat na plochu</text>
+  <rect x="213" y="45" width="28" height="28" rx="6" fill="#FF6A4D"/>
+  <rect x="210" y="43" width="28" height="28" rx="6" fill="#FFFBF3" stroke="#1E2A3A" stroke-width="2"/>
+  <path d="M224 50v14M217 57h14" stroke="#1E2A3A" stroke-width="2.4" stroke-linecap="round"/>
+</svg>

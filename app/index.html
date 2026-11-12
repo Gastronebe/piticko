@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Pitíčko</title>
+  <meta name="description" content="Jednoduché sledování příjmu tekutin. Data zůstávají v telefonu.">
+  <meta name="theme-color" content="#F5F0E6">
+  <meta name="color-scheme" content="light dark">
+  <link rel="manifest" href="/app/manifest.json">
+  <link rel="icon" href="/app/icons/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/app/icons/icon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/app/icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Pitíčko">
+  <meta name="robots" content="noindex">
+  <script src="/app/theme-init.js"></script>
+  <link rel="stylesheet" href="/app/app.css">
+  <script defer src="/app/strings.cs.js"></script>
+  <script defer src="/app/i18n.js"></script>
+  <script defer src="/app/util.js"></script>
+  <script defer src="/app/db.js"></script>
+  <script defer src="/app/reminders.js"></script>
+  <script defer src="/app/notify.js"></script>
+  <script defer src="/app/charts.js"></script>
+  <script defer src="/app/export.js"></script>
+  <script defer src="/app/install.js"></script>
+  <script defer src="/app/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#view" data-i18n="nav.today">Dnes</a>
+
+  <div id="onboarding" class="onboarding" hidden></div>
+
+  <div id="shell" class="shell" hidden>
+    <header class="topbar">
+      <h1 id="view-title" class="view-title" data-text="Pitíčko">Pitíčko</h1>
+      <p id="view-sub" class="view-sub"></p>
+    </header>
+
+    <main id="view" class="view" tabindex="-1"></main>
+
+    <div class="bottom">
+      <button id="add-btn" type="button" class="btn btn-primary btn-add">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+        <span data-i18n="nav.add">Přidat</span>
+      </button>
+      <nav class="tabs" data-i18n-aria="app.name">
+        <a href="#/" data-view="today">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3.5 4.4 6 7.9 6 11a6 6 0 0 1-12 0c0-3.1 2.5-6.6 6-11z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          <span data-i18n="nav.today">Dnes</span>
+        </a>
+        <a href="#/stats" data-view="stats">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V11M12 20V5M19 20v-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+          <span data-i18n="nav.stats">Statistiky</span>
+        </a>
+        <a href="#/settings" data-view="settings">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="7" r="2.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="17" r="2.2" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          <span data-i18n="nav.settings">Nastavení</span>
+        </a>
+      </nav>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <noscript>
+    <p class="noscript">Pitíčko potřebuje zapnutý JavaScript.</p>
+  </noscript>
+</body>
+</html>

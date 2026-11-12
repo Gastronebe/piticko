@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pitíčko – přehled o pití bez účtu a bez reklam</title>
+  <meta name="description" content="Pitíčko ti připomene, kolik jsi toho vypil/a, a nic víc. Pro omezení příjmu tekutin od lékaře i pro ty, kdo pijí málo. Data zůstávají v telefonu.">
+  <meta name="theme-color" content="#F5F0E6">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="/app/icons/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/app/icons/icon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/app/icons/apple-touch-icon.png">
+  <script src="/app/theme-init.js"></script>
+  <link rel="stylesheet" href="/landing.css">
+  <script defer src="/landing.js"></script>
+</head>
+<body>
+  <header class="wrap site-header">
+    <a class="brand" href="/">
+      <img src="/app/icons/favicon.svg" alt="" width="38" height="38">
+      <span>Pitíčko</span>
+    </a>
+    <div class="header-actions">
+      <button id="theme-toggle" type="button" class="theme-btn">Vzhled: systém</button>
+      <a class="btn btn-primary btn-small" href="/app/">Otevřít aplikaci</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- 1. Hero -->
+    <section class="hero" aria-labelledby="hero-h">
+      <div class="hero-copy">
+        <h1 id="hero-h" class="hero-title" data-text="Pitíčko">Pitíčko</h1>
+        <div>
+          <p class="hero-quibble">✎ Pít íčko? Ano, prosím, ale s přehledem.</p>
+        </div>
+        <p class="hero-slogan">Pitíčko ti připomene, kolik jsi toho vypil/a, a nic víc.</p>
+        <a class="btn hero-cta" href="/app/">Otevřít aplikaci →</a>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <svg class="hero-vessel" viewBox="0 0 220 230">
+          <defs>
+            <clipPath id="hero-cup-clip">
+              <polygon points="40,36 180,36 164,200 56,200"/>
+            </clipPath>
+            <pattern id="hero-dots" width="10" height="10" patternUnits="userSpaceOnUse">
+              <circle cx="3" cy="3" r="1.6" fill="var(--ink)" opacity="0.22"/>
+              <circle cx="8" cy="8" r="1.6" fill="var(--ink)" opacity="0.22"/>
+            </pattern>
+          </defs>
+          <!-- Posunutý risografický stín -->
+          <polygon points="46,42 186,42 170,206 62,206" fill="var(--accent-1)" opacity="0.38"/>
+          <!-- Papírové tělo sklenice -->
+          <polygon points="40,36 180,36 164,200 56,200" fill="var(--surface)"/>
+          <!-- Hladina s vlněním a halftone tečkami -->
+          <g clip-path="url(#hero-cup-clip)">
+            <path class="hero-wave-path" d="M -80 96 Q -60 89, -40 96 T 0 96 T 40 96 T 80 96 T 120 96 T 160 96 T 200 96 T 240 96 T 280 96 L 280 210 L -80 210 Z" fill="var(--accent-1)"/>
+            <rect x="34" y="96" width="154" height="110" fill="url(#hero-dots)"/>
+            <path class="hero-wave-path" d="M -80 96 Q -60 89, -40 96 T 0 96 T 40 96 T 80 96 T 120 96 T 160 96 T 200 96 T 240 96 T 280 96" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+          </g>
+          <!-- Hravá kapka nad sklenicí -->
+          <path d="M138 10 C131 20, 129 25, 138 30 C147 25, 145 20, 138 10 Z" fill="var(--accent-2)" stroke="var(--ink)" stroke-width="2.5"/>
+          <!-- Tlustý obrys nádoby a odměrné rysky -->
+          <path d="M34 33 L40 36 L56 200 L164 200 L180 36 L186 33" fill="none" stroke="var(--ink)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="34" y1="33" x2="186" y2="33" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="156" y1="77" x2="174" y2="77" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="148" y1="118" x2="170" y2="118" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="146" y1="159" x2="164" y2="159" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+          <!-- Štítek na sklenici -->
+          <rect x="56" y="114" width="108" height="54" rx="6" fill="var(--surface)" stroke="var(--ink)" stroke-width="2.5"/>
+          <text x="110" y="143" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="24" font-weight="800" fill="var(--text)">750 ml</text>
+          <text x="110" y="160" text-anchor="middle" font-family="Work Sans,sans-serif" font-size="12" font-weight="600" fill="var(--text)">zbývá dnes</text>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 2. Dva režimy (vstupenky) -->
+    <section id="rezimy" aria-labelledby="modes-h">
+      <h2 id="modes-h" class="sec-title">Dva režimy podle toho, co potřebuješ</h2>
+      <p class="sec-lead">Při prvním spuštění si vybereš jeden ze dvou pohledů. Aplikace nikdy neradí, kolik máš pít, a nic nepočítá z váhy ani jiných údajů. Limit i cíl zadáváš ty nebo tvůj lékař.</p>
+      <div class="grid-2">
+        <article class="ticket">
+          <div class="ticket-stub" aria-hidden="true">
+            <span class="ticket-no">01</span>
+            <svg class="ticket-svg" viewBox="0 0 36 36">
+              <polygon points="8,7 28,7 25,30 11,30" fill="none" stroke="currentColor" stroke-width="2.5"/>
+              <line x1="6" y1="15" x2="30" y2="15" stroke="currentColor" stroke-width="2.5" stroke-dasharray="3 2"/>
+            </svg>
+          </div>
+          <div class="ticket-body">
+            <h3>Mám omezení od lékaře</h3>
+            <p>Lékař ti stanovil denní limit tekutin (například při onemocnění srdce nebo ledvin). Pitíčko ti po celý den přehledně ukazuje, kolik z limitu ti ještě zbývá, bez výčitek a hodnocení.</p>
+          </div>
+        </article>
+
+        <article class="ticket ticket-alt">
+          <div class="ticket-stub" aria-hidden="true">
+            <span class="ticket-no">02</span>
+            <svg class="ticket-svg" viewBox="0 0 36 36">
+              <path d="M18 5 C11 14, 8 19, 8 24 a10 10 0 0 0 20 0 C28 19, 25 14, 18 5 Z" fill="none" stroke="currentColor" stroke-width="2.5"/>
+            </svg>
+          </div>
+          <div class="ticket-body">
+            <h3>Piju málo</h3>
+            <p>Chceš mít přehled, kolik za den vypiješ. Pokud chceš, zadáš si vlastní orientační cíl; dokud ho nenastavíš, zůstává prázdný a vidíš jen denní součet.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3. Jak to funguje (lepicí papírky) -->
+    <section id="jak-to-funguje" aria-labelledby="how-h">
+      <h2 id="how-h" class="sec-title">Jak to funguje</h2>
+      <div class="grid-3">
+        <article class="sticky sticky-1">
+          <div class="step-num" aria-hidden="true">1</div>
+          <h3>Zapiš jedním klepnutím</h3>
+          <p>Použij rychlá razítka 200, 250 nebo 500 ml, případně zadej vlastní množství. Spletl/a ses? Záznam snadno upravíš nebo smažeš.</p>
+        </article>
+        <article class="sticky sticky-2">
+          <div class="step-num" aria-hidden="true">2</div>
+          <h3>Sleduj denní i týdenní přehled</h3>
+          <p>Na nádobě hned vidíš, kolik zbývá do limitu nebo jak si stojíš oproti svému cíli. V přehledech najdeš graf dne, týdne i měsíce.</p>
+        </article>
+        <article class="sticky sticky-3">
+          <div class="step-num" aria-hidden="true">3</div>
+          <h3>Ukaž týden lékaři</h3>
+          <p>Jedním tlačítkem vytvoříš čitelný tiskový list posledních 7 dnů (PNG). Můžeš ho poslat, vytisknout nebo ukázat na kontrole.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 4. Soukromí (nejvýraznější sekce, tmavá v obou režimech) -->
+    <section id="soukromi" class="privacy-band" aria-labelledby="priv-h">
+      <div class="privacy-top">
+        <div>
+          <span class="privacy-tag">Soukromí na prvním místě</span>
+          <h2 id="priv-h" class="sec-title">Tvoje záznamy zůstávají v tvém telefonu. Nikde jinde.</h2>
+          <p class="sec-lead">Pitíčko je jako papírový sešit na lednici. Nemá registraci, účty ani databázi uživatelů na serveru. Nikdo cizí nevidí, kolik piješ nebo jaký máš režim.</p>
+        </div>
+        <!-- Tisková ilustrace uzavřeného sešitu se zámkem -->
+        <svg class="privacy-illust" viewBox="0 0 120 120" aria-hidden="true">
+          <rect x="26" y="18" width="74" height="90" rx="6" fill="#5FD3DF"/>
+          <rect x="20" y="12" width="74" height="90" rx="6" fill="#1E2836" stroke="#F5F0E6" stroke-width="3"/>
+          <line x1="32" y1="12" x2="32" y2="102" stroke="#F5F0E6" stroke-width="3"/>
+          <!-- Kroužky vazby sešitu -->
+          <line x1="14" y1="28" x2="25" y2="28" stroke="#FF8A70" stroke-width="4" stroke-linecap="round"/>
+          <line x1="14" y1="48" x2="25" y2="48" stroke="#FF8A70" stroke-width="4" stroke-linecap="round"/>
+          <line x1="14" y1="68" x2="25" y2="68" stroke="#FF8A70" stroke-width="4" stroke-linecap="round"/>
+          <line x1="14" y1="88" x2="25" y2="88" stroke="#FF8A70" stroke-width="4" stroke-linecap="round"/>
+          <!-- Zámek na obálce sešitu -->
+          <path d="M53 52 V44 a9 9 0 0 1 18 0 v8" fill="none" stroke="#F5F0E6" stroke-width="3"/>
+          <rect x="48" y="52" width="28" height="24" rx="4" fill="#FF8A70" stroke="#F5F0E6" stroke-width="3"/>
+          <circle cx="62" cy="64" r="3" fill="#141B26"/>
+        </svg>
+      </div>
+
+      <div class="privacy-points">
+        <div class="privacy-point">
+          <h3>Žádný účet</h3>
+          <p>Nic nevyplňuješ, nikam se nepřihlašuješ. Otevřeš a používáš.</p>
+        </div>
+        <div class="privacy-point">
+          <h3>Data jen v zařízení</h3>
+          <p>Všechny záznamy, limity i exporty vznikají a zůstávají přímo v tvém telefonu.</p>
+        </div>
+        <div class="privacy-point">
+          <h3>Nulové sledování</h3>
+          <p>Žádné Google Analytics, žádné reklamní ani sledovací cookies.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Instalace na plochu -->
+    <section id="instalace" aria-labelledby="inst-h">
+      <h2 id="inst-h" class="sec-title">Přidej si Pitíčko na plochu</h2>
+      <p class="sec-lead">Pitíčko je webová aplikace (PWA). Po přidání na plochu vypadá jako běžná aplikace a funguje i bez připojení k internetu.</p>
+      <div class="grid-2">
+        <article class="card">
+          <h3>iPhone (Safari)</h3>
+          <ol class="ios-steps">
+            <li>
+              <span>1. Otevři <a href="/app/">piticko.online/app/</a> v prohlížeči Safari a dole klepni na <strong>Sdílet</strong>.</span>
+              <img src="/app/img/ios-step1.svg" alt="Krok 1: tlačítko Sdílet v Safari" width="280" height="120" loading="lazy">
+            </li>
+            <li>
+              <span>2. V nabídce vyber <strong>Přidat na plochu</strong>.</span>
+              <img src="/app/img/ios-step2.svg" alt="Krok 2: položka Přidat na plochu" width="280" height="120" loading="lazy">
+            </li>
+            <li>
+              <span>3. Potvrď klepnutím na <strong>Přidat</strong> v pravém horním rohu.</span>
+              <img src="/app/img/ios-step3.svg" alt="Krok 3: tlačítko Přidat" width="280" height="120" loading="lazy">
+            </li>
+          </ol>
+        </article>
+        <article class="card">
+          <h3>Android (Chrome)</h3>
+          <p>V prohlížeči Chrome otevři aplikaci a klepni na tlačítko <strong>Nainstalovat</strong> (nebo v menu prohlížeče ⋮ vyber „Přidat na plochu“ / „Nainstalovat aplikaci“).</p>
+          <p id="android-install-note">
+            <button id="android-install-btn" type="button" class="btn btn-primary">Nainstalovat aplikaci</button>
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 6. Upozornění -->
+    <section id="upozorneni" aria-labelledby="notif-h">
+      <h2 id="notif-h" class="sec-title">Klidná upozornění bez nátlaku</h2>
+      <div class="grid-2">
+        <article class="card">
+          <h3>Co připomínky umí</h3>
+          <p>Ve výchozím stavu jsou vypnuté. Pokud je zapneš, připomenou ti jen zapsat příjem (např. v 9:00, 13:00 a 17:00). Nikdy tě nenabádají k pití ani k „dopíjení cíle“. V režimu omezení si můžeš zapnout upozornění jen tehdy, když se blížíš dennímu limitu.</p>
+        </article>
+        <article class="card">
+          <h3>Jak fungují na iPhonu a omezení</h3>
+          <p>Na iPhonu fungují upozornění pouze v aplikaci přidané na plochu a od verze iOS 16.4. Upozornění jsou vždy orientační – iOS i Android mohou doručení zdržet kvůli úspoře baterie, přesnost na minutu proto nelze slíbit.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 7. Časté otázky -->
+    <section id="otazky" aria-labelledby="faq-h">
+      <h2 id="faq-h" class="sec-title">Časté otázky</h2>
+      <div class="faq">
+        <details>
+          <summary>Je Pitíčko zdravotnický prostředek?</summary>
+          <div class="faq-body">
+            <p>Ne. Pitíčko je jednoduchý zápisník příjmu tekutin. Nenahrazuje lékařskou péči, nestanovuje diagnózu a nedoporučuje, kolik máte pít. Pokud máte omezení příjmu tekutin, vždy se řiďte pokyny svého lékaře.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Co když ztratím telefon nebo si koupím nový?</summary>
+          <div class="faq-body">
+            <p>Protože záznamy jsou uložené pouze ve vašem telefonu a ne na žádném serveru, při ztrátě telefonu je nelze na dálku obnovit. V nastavení si ale můžete kdykoli stáhnout zálohu celé historie (CSV nebo JSON) a přehled týdne jako obrázek.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Kolik aplikace stojí a jsou v ní reklamy?</summary>
+          <div class="faq-body">
+            <p>Pitíčko je zdarma a bez reklam.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Funguje aplikace bez internetu?</summary>
+          <div class="faq-body">
+            <p>Ano. Po prvním otevření (a zejména po přidání na plochu) funguje zapisování, statistiky i export obrázku úplně bez připojení k internetu.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Proč se při změně režimu mažou záznamy?</summary>
+          <div class="faq-body">
+            <p>Režim „Mám omezení od lékaře“ a režim „Piju málo“ sledují opačný účel, takže míchat jejich historii by zkreslovalo statistiky i přehled pro lékaře. Před změnou režimu vám aplikace vždy nejprve nabídne export dosavadních záznamů.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <!-- 8. Patička -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="footer-disclaimer">
+        Pitíčko nenahrazuje lékařskou radu a neposkytuje doporučení, kolik pít. Při omezení příjmu tekutin se řiďte pokyny lékaře.
+      </p>
+      <div class="footer-links">
+        <span>© Pitíčko (piticko.online)</span>
+        <nav aria-label="Patička">
+          <a href="/ochrana-soukromi">Zásady ochrany osobních údajů</a> ·
+          <a href="/app/">Otevřít aplikaci</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,456 @@
+/*
+ * Pitíčko – vzhled landing page a stránky ochrany soukromí.
+ * Vizuální směr: „kuchyňský sešit“ (risografický tisk, papír + inkoust + 2 akcenty).
+ * Sdílí barevnou paletu a lokální fonty s aplikací.
+ */
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/app/fonts/fraunces-800-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/app/fonts/fraunces-800-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/app/fonts/work-sans-400-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/app/fonts/work-sans-400-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/app/fonts/work-sans-600-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/app/fonts/work-sans-600-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ---------- Barvy: světlý režim (výchozí) ---------- */
+:root {
+  color-scheme: light dark;
+  --paper: #F5F0E6;
+  --ink: #1E2A3A;
+  --accent-1: #2BA7B5;
+  --accent-2: #FF6A4D;
+  --card: #FFFBF3;
+  --on-accent: #1E2A3A;
+
+  /* Sekce Soukromí má tmavé pozadí v obou režimech */
+  --priv-bg: #141B26;
+  --priv-card: #1E2836;
+  --priv-text: #F5F0E6;
+  --priv-accent-1: #5FD3DF;
+  --priv-accent-2: #FF8A70;
+
+  --bg: var(--paper);
+  --surface: var(--card);
+  --text: var(--ink);
+  --border: var(--ink);
+  --radius: 8px;
+  --font-head: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Work Sans', system-ui, -apple-system, sans-serif;
+}
+[data-theme="light"] { color-scheme: light; }
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #141B26;
+  --ink: #F5F0E6;
+  --accent-1: #5FD3DF;
+  --accent-2: #FF8A70;
+  --card: #1E2836;
+  --on-accent: #141B26;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="dark"]),
+  [data-theme="system"] {
+    --paper: #141B26;
+    --ink: #F5F0E6;
+    --accent-1: #5FD3DF;
+    --accent-2: #FF8A70;
+    --card: #1E2836;
+    --on-accent: #141B26;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.58;
+  background: var(--bg);
+  color: var(--text);
+}
+a {
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--accent-1);
+  text-decoration-thickness: 2.5px;
+  text-underline-offset: 3px;
+}
+a:hover { text-decoration-color: var(--accent-2); }
+h1, h2, h3 {
+  font-family: var(--font-head);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin: 0 0 .45em;
+}
+p { margin: 0 0 1em; }
+p:last-child { margin-bottom: 0; }
+:focus-visible {
+  outline: 3px solid var(--accent-2);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+
+/* ---------- Hlavička ---------- */
+.site-header {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 18px 0;
+  border-bottom: 2px solid var(--ink);
+}
+.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-head); font-weight: 800; font-size: 22px;
+  color: var(--text); text-decoration: none;
+}
+.brand img { width: 38px; height: 38px; border-radius: 6px; }
+.header-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.theme-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 48px; min-height: 48px; padding: 0 14px;
+  background: var(--surface); color: var(--text);
+  border: 2px solid var(--ink); border-radius: var(--radius);
+  box-shadow: 2px 2px 0 var(--ink);
+  font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
+}
+
+/* ---------- Tlačítka ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 52px; padding: 12px 24px;
+  font-family: var(--font-body); font-size: 18px; font-weight: 600;
+  border-radius: var(--radius); border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  cursor: pointer; text-decoration: none; text-align: center;
+  transition: transform 150ms ease;
+}
+.btn:hover { transform: translate(-1px, -1px); }
+.btn:active { transform: translate(2px, 2px); }
+.btn-primary { background: var(--accent-1); color: var(--on-accent); }
+.btn-secondary { background: var(--surface); color: var(--text); }
+.btn-small { min-height: 48px; padding: 8px 16px; font-size: 16px; box-shadow: 2px 2px 0 var(--ink); }
+
+/* ---------- Sekce a nadpisy s podtržením fixou ---------- */
+section { padding: 44px 0; }
+.sec-title {
+  font-size: clamp(26px, 4.2vw, 36px);
+  display: inline-block;
+  position: relative;
+  margin-bottom: 16px;
+}
+.sec-title::after {
+  content: "";
+  display: block;
+  height: 5px;
+  margin-top: 3px;
+  background: var(--accent-2);
+  border-radius: 3px;
+  transform: rotate(-0.6deg);
+}
+.sec-lead { font-size: 18px; max-width: 64ch; margin-bottom: 26px; }
+
+/* ---------- 1. Hero s misregistration a nádobou ---------- */
+.hero {
+  display: grid;
+  gap: 28px;
+  align-items: center;
+  padding: 40px 0 48px;
+  border-bottom: 2px dashed var(--ink);
+}
+@media (min-width: 760px) {
+  .hero { grid-template-columns: 1.25fr 0.75fr; }
+}
+.hero-title {
+  font-size: clamp(54px, 11vw, 88px);
+  line-height: 1.04;
+  margin-bottom: 10px;
+  text-shadow: 3px 3px 0 var(--accent-1);
+}
+[data-theme="dark"] .hero-title {
+  text-shadow: 3px 3px 0 rgba(95, 211, 223, 0.42);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="dark"]) .hero-title,
+  [data-theme="system"] .hero-title {
+    text-shadow: 3px 3px 0 rgba(95, 211, 223, 0.42);
+  }
+}
+/* Poznámka na okraji sešitu (Easter egg) */
+.hero-quibble {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-head);
+  font-size: 16px;
+  background: var(--surface);
+  border: 1.5px dashed var(--ink);
+  border-radius: 6px;
+  padding: 5px 12px;
+  transform: rotate(-1.3deg);
+  margin: 0 0 18px;
+}
+.hero-slogan {
+  font-family: var(--font-head);
+  font-size: clamp(22px, 3.6vw, 28px);
+  max-width: 30ch;
+  margin: 0 0 24px;
+}
+.hero-cta {
+  font-family: var(--font-head);
+  font-size: 21px;
+  font-weight: 800;
+  min-height: 58px;
+  padding: 12px 30px;
+  background: var(--accent-2);
+  color: var(--on-accent);
+}
+.hero-art {
+  display: flex; justify-content: center;
+}
+.hero-vessel {
+  width: min(260px, 78vw);
+  height: auto;
+  overflow: visible;
+}
+@keyframes hero-wave {
+  from { transform: translateX(0); }
+  to { transform: translateX(-80px); }
+}
+.hero-wave-path { animation: hero-wave 3.6s linear infinite; }
+
+/* ---------- Mřížky a karty ---------- */
+.grid-2 { display: grid; gap: 20px; }
+.grid-3 { display: grid; gap: 20px; }
+@media (min-width: 700px) {
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+}
+.card {
+  background: var(--surface);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: 4px 4px 0 var(--ink);
+  padding: 24px;
+}
+.card h3 { font-size: 22px; margin-bottom: 8px; }
+
+/* ---------- 2. Dva režimy jako papírové vstupenky ---------- */
+.ticket {
+  display: flex; align-items: stretch;
+  background: var(--surface);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: 4px 4px 0 var(--ink);
+  overflow: hidden;
+}
+.ticket-stub {
+  width: 74px; flex: none;
+  background: var(--accent-1);
+  color: var(--on-accent);
+  border-right: 2px dashed var(--ink);
+  display: flex; flex-direction: column; align-items: center; justify-content: space-between;
+  padding: 16px 8px;
+}
+.ticket-alt .ticket-stub { background: var(--accent-2); }
+.ticket-no { font-family: var(--font-head); font-size: 19px; font-weight: 800; }
+.ticket-svg { width: 38px; height: 38px; }
+.ticket-body { padding: 20px 22px; flex: 1; }
+.ticket-body h3 { font-size: 23px; margin-bottom: 8px; }
+
+/* ---------- 3. Jak to funguje: lepicí papírky ---------- */
+.sticky {
+  position: relative;
+  background: var(--surface);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: 4px 4px 0 var(--ink);
+  padding: 28px 22px 22px;
+}
+.sticky-1 { transform: rotate(-0.8deg); }
+.sticky-2 { transform: rotate(0.7deg); }
+.sticky-3 { transform: rotate(-0.5deg); }
+/* Lepicí páska nahoře */
+.sticky::before {
+  content: "";
+  position: absolute;
+  top: -10px; left: 50%;
+  width: 76px; height: 20px;
+  transform: translateX(-50%) rotate(-1.5deg);
+  background: var(--accent-1);
+  border: 2px solid var(--ink);
+}
+.sticky-2::before { background: var(--accent-2); transform: translateX(-50%) rotate(1.5deg); }
+.step-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px;
+  border-radius: var(--radius);
+  background: var(--accent-1); color: var(--on-accent);
+  border: 2px solid var(--ink);
+  font-family: var(--font-head); font-size: 20px; font-weight: 800;
+  margin-bottom: 12px;
+}
+.sticky-2 .step-num { background: var(--accent-2); }
+
+/* ---------- 4. Soukromí – nejvýraznější sekce (tmavá v obou režimech) ---------- */
+.privacy-band {
+  background: var(--priv-bg);
+  color: var(--priv-text);
+  border: 3px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: 6px 6px 0 var(--accent-2);
+  padding: 36px 24px;
+  margin: 24px 0;
+}
+@media (min-width: 720px) { .privacy-band { padding: 48px 44px; } }
+.privacy-top {
+  display: grid; gap: 24px; align-items: center;
+}
+@media (min-width: 720px) {
+  .privacy-top { grid-template-columns: 1fr auto; }
+}
+.privacy-tag {
+  display: inline-block;
+  background: var(--priv-accent-2);
+  color: var(--priv-bg);
+  border: 2px solid var(--priv-text);
+  font-family: var(--font-head); font-weight: 800; font-size: 14px;
+  padding: 5px 12px; border-radius: 6px; margin-bottom: 14px;
+}
+.privacy-band .sec-title { color: var(--priv-text); }
+.privacy-band .sec-title::after { background: var(--priv-accent-1); }
+.privacy-band .sec-lead { color: var(--priv-text); margin-bottom: 0; }
+.privacy-illust { width: 128px; height: 128px; flex: none; }
+.privacy-points {
+  display: grid; gap: 16px; margin-top: 28px;
+}
+@media (min-width: 700px) { .privacy-points { grid-template-columns: repeat(3, 1fr); } }
+.privacy-point {
+  background: var(--priv-card);
+  border: 2px solid var(--priv-text);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+.privacy-point h3 { color: var(--priv-accent-1); font-size: 20px; margin-bottom: 6px; }
+.privacy-point p { color: var(--priv-text); font-size: 16px; }
+
+/* ---------- 5. Instalace ---------- */
+.ios-steps { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 14px; }
+.ios-steps li { display: grid; gap: 6px; }
+.ios-steps img {
+  width: 100%; max-width: 300px; height: auto;
+  border-radius: var(--radius); border: 2px solid var(--ink);
+  background: var(--paper);
+}
+
+/* ---------- 7. Časté otázky ---------- */
+.faq { display: grid; gap: 12px; }
+.faq details {
+  background: var(--surface);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: 3px 3px 0 var(--ink);
+  padding: 2px 18px;
+}
+.faq summary {
+  cursor: pointer;
+  font-family: var(--font-head);
+  font-weight: 800; font-size: 19px;
+  padding: 14px 0; list-style: none;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  min-height: 52px;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: "+";
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; flex: none;
+  background: var(--accent-1); color: var(--on-accent);
+  border: 2px solid var(--ink); border-radius: 6px;
+  font-size: 20px; font-weight: 800;
+}
+.faq details[open] summary::after { content: "−"; background: var(--accent-2); }
+.faq .faq-body { padding: 4px 0 16px; border-top: 1.5px dashed var(--ink); }
+
+/* ---------- 8. Patička ---------- */
+.site-footer {
+  margin-top: 32px; padding: 32px 0 48px;
+  border-top: 2px solid var(--ink);
+  font-size: 16px;
+}
+.footer-disclaimer {
+  background: var(--surface);
+  border: 2px dashed var(--ink);
+  border-radius: var(--radius);
+  padding: 16px 20px; margin-bottom: 18px;
+}
+.footer-links {
+  display: flex; flex-wrap: wrap; gap: 18px;
+  align-items: center; justify-content: space-between;
+}
+
+/* ---------- Stránka zásad ---------- */
+.prose { max-width: 720px; padding: 24px 0 48px; }
+.prose h1 { font-size: clamp(30px, 5vw, 42px); margin-bottom: 16px; }
+.prose h2 { font-size: 23px; margin-top: 28px; }
+.prose ul { padding-left: 22px; }
+.prose li { margin-bottom: 6px; }
+.prose code {
+  background: var(--surface);
+  border: 1.5px solid var(--ink);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 0.92em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+  .sticky-1, .sticky-2, .sticky-3, .hero-quibble {
+    transform: none !important;
+  }
+}

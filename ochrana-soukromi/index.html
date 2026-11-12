@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zásady ochrany osobních údajů – Pitíčko</title>
+  <meta name="description" content="Zásady ochrany osobních údajů aplikace Pitíčko. Záznamy zůstávají ve vašem zařízení.">
+  <meta name="theme-color" content="#F5F0E6">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="/app/icons/favicon.svg" type="image/svg+xml">
+  <script src="/app/theme-init.js"></script>
+  <link rel="stylesheet" href="/landing.css">
+  <script defer src="/landing.js"></script>
+</head>
+<body>
+  <header class="wrap site-header">
+    <a class="brand" href="/">
+      <img src="/app/icons/favicon.svg" alt="" width="36" height="36">
+      <span>Pitíčko</span>
+    </a>
+    <div class="header-actions">
+      <button id="theme-toggle" type="button" class="theme-btn">Vzhled: systém</button>
+      <a class="btn btn-primary btn-small" href="/app/">Otevřít aplikaci</a>
+    </div>
+  </header>
+
+  <main class="wrap prose">
+    <h1>Zásady ochrany osobních údajů</h1>
+
+    <p><strong>Stručně:</strong> Pitíčko nevyžaduje registraci a vaše záznamy o pití nikam neodesílá. Všechna data o příjmu tekutin, zvoleném režimu, limitech a cílech jsou uložená pouze ve vašem telefonu nebo počítači.</p>
+
+    <h2>1. Jaká data zůstávají pouze ve vašem zařízení</h2>
+    <p>Následující údaje jsou uložené v úložišti prohlížeče (IndexedDB a localStorage) přímo ve vašem zařízení a provozovatel k nim nemá přístup:</p>
+    <ul>
+      <li>zvolený režim („Mám omezení od lékaře“ nebo „Piju málo“),</li>
+      <li>vámi zadaný denní limit nebo orientační cíl,</li>
+      <li>jednotlivé záznamy o příjmu tekutin (datum, čas, množství v ml),</li>
+      <li>nastavení vzhledu (systémový, světlý, tmavý) a časy připomínek.</li>
+    </ul>
+    <p>Export týdne jako obrázek (PNG) i export dat (CSV, JSON) se vytváří přímo ve vašem zařízení.</p>
+
+    <h2>2. Upozornění (Web Push)</h2>
+    <p>Upozornění jsou ve výchozím stavu vypnutá. Pokud je sami zapnete a udělíte souhlas v prohlížeči:</p>
+    <ul>
+      <li>Lokální připomínky vyhodnocuje vaše zařízení.</li>
+      <li>Při přihlášení k doručování upozornění (Web Push) se na server uloží pouze technický doručovací údaj prohlížeče (<code>endpoint</code> a šifrovací klíče <code>p256dh</code> a <code>auth</code>). Neukládáme k němu jméno, e-mail, IP adresu, identifikátor uživatele ani žádné údaje o tom, kolik pijete nebo jaký máte režim.</li>
+      <li>Samotný text upozornění skládá vaše zařízení z lokálních dat. Ze serveru nikdy neodcházejí zdravotní údaje.</li>
+      <li>Když upozornění v nastavení vypnete (nebo smažete všechna data v aplikaci), technický záznam pro doručování se ze serveru smaže.</li>
+    </ul>
+
+    <h2>3. Cookies a analytika</h2>
+    <p>Pitíčko nepoužívá žádné analytické, reklamní ani sledovací nástroje (žádné Google Analytics apod.) a neukládá žádné sledovací cookies.</p>
+
+    <h2>4. Hosting a přenos dat</h2>
+    <p>Web a aplikace jsou provozovány na infrastruktuře společnosti Vercel Inc. Při načtení stránky ze sítě dochází k běžnému technickému zpracování HTTP požadavků (IP adresa a hlavičky prohlížeče v provozních záznamech hostingu) v rozsahu nutném pro doručení stránky a ochranu proti zneužití.</p>
+
+    <h2>5. Jak data smazat</h2>
+    <p>Všechna lokální data můžete kdykoli smazat přímo v aplikaci v sekci <em>Nastavení → Smazat všechna data</em>, případně vymazáním dat webu v nastavení prohlížeče.</p>
+
+    <h2>6. Zdravotní upozornění</h2>
+    <p>Pitíčko není zdravotnický prostředek, nenahrazuje lékařskou radu a neposkytuje doporučení, kolik pít. Při omezení příjmu tekutin se vždy řiďte pokyny svého lékaře.</p>
+
+    <h2>7. Kontakt a účinnost</h2>
+    <p>
+      Kontaktní e-mail: <a href="mailto:soukromi@piticko.online">soukromi@piticko.online</a><br>
+      Datum účinnosti těchto zásad: <strong>12. 11. 2026</strong>
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="footer-disclaimer">
+        Pitíčko nenahrazuje lékařskou radu a neposkytuje doporučení, kolik pít. Při omezení příjmu tekutin se řiďte pokyny lékaře.
+      </p>
+      <div class="footer-links">
+        <span>© Pitíčko (piticko.online)</span>
+        <nav aria-label="Patička">
+          <a href="/">Úvodní stránka</a> ·
+          <a href="/app/">Otevřít aplikaci</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
