@@ -124,7 +124,14 @@ p:last-child { margin-bottom: 0; }
   color: var(--text); text-decoration: none;
 }
 .brand img { width: 38px; height: 38px; border-radius: 6px; }
-.header-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.header-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.header-anchor {
+  font-family: var(--font-head);
+  font-size: 15px;
+  font-weight: 800;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
 
 /* ---------- Tlačítka ---------- */
 .btn {
@@ -208,6 +215,12 @@ section { padding: 44px 0; }
   max-width: 30ch;
   margin: 0 0 24px;
 }
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
 .hero-cta {
   font-family: var(--font-head);
   font-size: 21px;
@@ -216,6 +229,13 @@ section { padding: 44px 0; }
   padding: 12px 30px;
   background: var(--accent-2);
   color: var(--on-accent);
+}
+.hero-more-link {
+  font-family: var(--font-head);
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--accent-1);
+  text-decoration-color: var(--accent-1);
 }
 .hero-art {
   display: flex; justify-content: center;

@@ -78,7 +78,7 @@ module.exports = async function handler(req, res) {
   }
   const publicKey = process.env.VAPID_PUBLIC_KEY;
   const privateKey = process.env.VAPID_PRIVATE_KEY;
-  const subject = process.env.VAPID_SUBJECT || 'mailto:soukromi@piticko.online';
+  const subject = process.env.VAPID_SUBJECT || 'mailto:pavlinasteiglova@gmail.com';
   if (!publicKey || !privateKey) {
     return res.status(503).json({ error: 'VAPID keys not configured' });
   }
